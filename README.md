@@ -1,7 +1,7 @@
 Mega Neon Pong v0.1.5 (Unplayable right now):
 ==============================================
 
-Includes two surface shaders: A regular box blur, and these effects:
+Has 2 paddles, a ball, and these are just a few of the many styles:
 
 ![screenshot](http://i.imgur.com/b5Q8Y8Q.png)
 
