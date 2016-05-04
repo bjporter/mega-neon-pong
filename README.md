@@ -1,10 +1,7 @@
-Mega Neon Pong:
-===============
+Mega Neon Pong v0.1.5 (Unplayable right now):
+==============================================
 
-Includes two surface shaders: A regular box blur, and a [Gaussian blur]
-[Wikipedia].
-
-
+Includes two surface shaders: A regular box blur, and these effects:
 
 ![screenshot](http://i.imgur.com/b5Q8Y8Q.png)
 
