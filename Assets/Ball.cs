@@ -101,12 +101,21 @@ public class Ball : MonoBehaviour {
     public void ResetBall() {
         transform.position = new Vector3(0f, -0.19f, 1.11f);
 
-        float randStartY = Random.Range(-45, 45);
+        float randStartY = Random.Range(-66, 66);
+
         //rigidBody.AddForce(new Vector2(-750f, randStartY));
-        if (randStartY <= 0.5f && randStartY >= -0.5f) {
-            randStartY = (randStartY / randStartY) * 0.6f;
+        if (randStartY <= 4f && randStartY >= -5f) {
+            randStartY = 10f; //(randStartY / randStartY) * 0.6f;
         }
-        rigidBody.AddForce(new Vector2(-750f, randStartY));
+
+        int randFiftyFifty = Random.Range(1, 3);
+        float startDirection = 1;
+
+        if (randFiftyFifty == 1) { 
+            startDirection *= -1;
+        }
+
+        rigidBody.AddForce(new Vector2(-750f * startDirection, randStartY));
     }
 
 	// Use this for initialization

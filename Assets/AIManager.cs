@@ -37,7 +37,7 @@ public class AIManager : MonoBehaviour {
         gameSecondsStart += Time.deltaTime;
 
         if(lerpStarted) {
-            randomLerpSpeed = Random.Range(0.5f, 1f);
+            randomLerpSpeed = Random.Range(0.4f, 1.1f);
             startPosition = rightPaddle.transform.position;
             lerpStarted = false;
         }

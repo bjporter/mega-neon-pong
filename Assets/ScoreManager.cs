@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour {
     private int player1Score = 0;
     private int player2Score = 0;
-    private int maxScore = 11;
+    private int maxScore = 5;
 
     public static ScoreManager instance;
 

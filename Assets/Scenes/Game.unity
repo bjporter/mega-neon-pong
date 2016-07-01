@@ -3483,7 +3483,8 @@ AudioSource:
   m_GameObject: {fileID: 316766166}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243000012065322562, guid: cd47b25e5e2d52d4d84c850643679fa8,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 3cac0e131b865a549b7128006fc30ff2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -13055,6 +13056,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glitch: {fileID: 1348205929}
   rippleEffect: {fileID: 1309213850}
+  wallSoundSource: {fileID: 316766168}
+  leftPaddleHitSource: {fileID: 1889827061}
+  rightPaddleHitSource: {fileID: 487683287}
+  wallSoundClip: {fileID: 8300000, guid: 33bc0a2c963b96244bb4fb3e8938f4e5, type: 3}
+  leftPaddleHitClip: {fileID: 8300000, guid: 3c6e8823f14efbf489d4ef75adf17516, type: 3}
+  rightPaddleHitClip: {fileID: 8300000, guid: 415d36b8ccaeb5f42a146f83ea1e65a2, type: 3}
 --- !u!1 &850348091
 GameObject:
   m_ObjectHideFlags: 0
@@ -27119,7 +27126,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1663e9248ce2e4c4ab441eb5ce73ab04, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 33bc0a2c963b96244bb4fb3e8938f4e5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -34487,6 +34494,8 @@ MonoBehaviour:
   - {fileID: 2061704290}
   - {fileID: 383632965}
   - {fileID: 1168370113}
+  gameOverClip: {fileID: 8300000, guid: 1288d93fd9b988743ad7350b5547ce76, type: 3}
+  gameOverSource: {fileID: 1978531812}
   isLocalCoop: 1
 --- !u!4 &1812175781
 Transform:
@@ -36847,10 +36856,11 @@ AudioSource:
   m_GameObject: {fileID: 1978531810}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1288d93fd9b988743ad7350b5547ce76, type: 3}
+  OutputAudioMixerGroup: {fileID: 243000011664302440, guid: cd47b25e5e2d52d4d84c850643679fa8,
+    type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.239
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -22,6 +22,12 @@ public class StateManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] cameraEffects;
 
+    [SerializeField]
+    private AudioClip gameOverClip;
+
+    [SerializeField]
+    private AudioSource gameOverSource;
+
     private void CreateSingleton() {
         if (instance == null) {
             instance = this;
@@ -95,13 +101,15 @@ public class StateManager : MonoBehaviour {
     void GameOver() {
         gamePaused = true;
         ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        if(ScoreManager.instance.GetPlayer1Score() == 7f) {
+        if(ScoreManager.instance.GetPlayer1Score() == 5f) {
             gameOverText.text = "Player 1 Wins!";
         } else {
             gameOverText.text = "Player 2 Wins!";
         }
         gameOver = true;
         gameOverPanel.SetActive(true);
+        gameOverSource.PlayOneShot(gameOverClip);
+
     }
 
     public void Player1Scored() {
@@ -141,9 +149,9 @@ public class StateManager : MonoBehaviour {
     }
 
     void CheckForEndGameScores() {
-        if(ScoreManager.instance.GetPlayer1Score() == 7) {
+        if(ScoreManager.instance.GetPlayer1Score() == 5) {
             GameOver();
-        } else if(ScoreManager.instance.GetPlayer2Score() == 7) {
+        } else if(ScoreManager.instance.GetPlayer2Score() == 5) {
             GameOver();
         }
     }
