@@ -1,19 +1,24 @@
-Mega Neon Pong v0.1.5 (Unplayable right now):
-==============================================
+Mega Neon Pong v0.3 (ALPHA - just barely playable edition :D :D 
+================================================================
 
 Has 2 paddles, a ball, and these are just a few of the many styles:
 
+New Screens:
+![screenshot](http://i.imgur.com/0d64ls0.png)
+
+![screenshot](http://i.imgur.com/WtLWmjS.png)
+
+![screenshot](http://i.imgur.com/5q4C63Y.png)
+
+
+Old Screens:
 ![screenshot](http://i.imgur.com/b5Q8Y8Q.png)
 
 ![screenshot](http://i.imgur.com/zXuOwBc.png)
 
 ![screenshot](http://i.imgur.com/UWlXjR5.png)
 
-![screenshot](http://i.imgur.com/FGySJ2a.png)
 
-![screenshot](http://i.imgur.com/b57Rnhm.png)
-
-![screenshot](http://i.imgur.com/pCZMXC9.png)
 
 
 System Requirements:
