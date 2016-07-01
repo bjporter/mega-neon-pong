@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour {
         None = 3
     }
 
+    public bool IsSinglePlayer() {
+        return gameType == GameType.SinglePlayer;
+    }
+
+    public bool IsTwoPlayer() {
+        return gameType == GameType.TwoPlayer;
+    }
+
     public void SetSinglePlayer() {
         gameType = GameType.SinglePlayer;
     }
@@ -31,6 +39,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Awake() {
+        gameType = GameType.SinglePlayer;
+        Debug.Log("Game Type: " + gameType.ToString());
         MakeSingleton();
     }
 

@@ -4,18 +4,37 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
-    public void Quit() {
+    [SerializeField]
+    private AudioClip quit, click;
+
+    [SerializeField]
+    private AudioSource quitSource, clickSource;
+
+    IEnumerator QuitAudio() {
+        quitSource.PlayOneShot(quit);
+        yield return new WaitForSeconds(3f);
         Application.Quit();
+    }
+
+    IEnumerator ClickAudio() {
+        clickSource.PlayOneShot(click);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Game");
+    }
+
+
+    public void Quit() {
+        StartCoroutine(QuitAudio());
     }
 
     public void PlayTwoPlayerGame() {
         GameManager.instance.SetTwoPlayer();
-        SceneManager.LoadScene("Game");
+        StartCoroutine(ClickAudio());
     }
 
     public void PlayOnePlayerGame() {
         GameManager.instance.SetSinglePlayer();
-        SceneManager.LoadScene("Game");
+        StartCoroutine(ClickAudio());
     }
 
     // Use this for initialization

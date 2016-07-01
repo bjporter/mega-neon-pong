@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour {
     [SerializeField]
     private RippleEffectEdit rippleEffect;
 
-    void OnCollisionStay2D(Collision2D collision) {
+/*    void OnCollisionStay2D(Collision2D collision) {
         Debug.Log("Stay Collision with " + collision.gameObject.tag + ", " + collision.gameObject.name);
 
         if (collision.gameObject.tag == "Paddle") {
@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour {
                 }
             }
         }
-    }
+    }*/
 
     void OnCollisionEnter2D(Collision2D collision) {
         //Produce a ripple
@@ -67,9 +67,9 @@ public class Ball : MonoBehaviour {
                 Vector2 pointOfContactNormal = collision.contacts[i].normal;
 
                 if (pointOfContactNormal == Vector2.right) {
-                    ScoreManager.instance.IncrementPlayer2Score();
+                    StateManager.instance.Player2Scored();
                 } else if (pointOfContactNormal == Vector2.left) {
-                    ScoreManager.instance.IncrementPlayer1Score();
+                    StateManager.instance.Player1Scored();
                 }
             }
         }
@@ -87,13 +87,11 @@ public class Ball : MonoBehaviour {
         if (randStartY <= 0.5f && randStartY >= -0.5f) {
             randStartY = (randStartY / randStartY) * 0.6f;
         }
-        rigidBody.AddForce(new Vector2(-750f, 0));
+        rigidBody.AddForce(new Vector2(-750f, randStartY));
     }
 
 	// Use this for initialization
-	void Start () {
-        ResetBall();
-    }
+	void Start () {}
 	
 	// Update is called once per frame
 	void Update () {

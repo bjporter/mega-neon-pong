@@ -47,74 +47,91 @@ public class ControlManager : MonoBehaviour {
     }
 
     void Update () {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            Application.Quit();
-        }
+        //if(Input.GetKeyDown(KeyCode.Escape)) {
+          //  Application.Quit();
+        //}
 
+        //GAME OVER PANEL
         if(StateManager.instance.gameOver) {
             if(Input.GetKeyUp(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
                 StateManager.instance.NewGame();
             }
         }
 
+        //CHANGE STYLE
         if (Input.GetKeyDown(KeyCode.Y)) {
             StateManager.instance.NextCameraEffect();
         }
 
         if (!StateManager.instance.gameOver) {
-            if(startPanel.activeInHierarchy) {
-                if(Input.GetKeyUp(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
-                    startPanel.SetActive(false);
+
+            //GAME START PANEL
+            if (startPanel.activeInHierarchy) {
+                if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+                    StateManager.instance.StartGame();
                 }
             }
 
+            //OPTIONS / MENU PANEL
             if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.P)) {
-                if(!pausePanel.activeInHierarchy) {
+                if (!pausePanel.activeInHierarchy) {
                     pausePanel.SetActive(true);
-                } else {
-                    pausePanel.SetActive(false);
+                    StateManager.instance.PauseGame();
                 }
             }
 
-            if (Input.GetKey(KeyCode.W)) {
-                Debug.Log("player 1 up");
-                Vector3 t = leftPaddleP1.transform.position;
-                t.y = BorderTopCheck(t);
-                leftPaddleP1.transform.position = t;
-            }
-            else if (Input.GetKey(KeyCode.S)) {
-                Debug.Log("palyer 1 down");
-                Vector3 t = leftPaddleP1.transform.position;
-                t.y = BorderBottomCheck(t);
-                leftPaddleP1.transform.position = t;
+            if(pausePanel.activeInHierarchy) {
+                if((Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))) {
+                    pausePanel.SetActive(false);
+                    StateManager.instance.UnPauseGame();
+                } else if(Input.GetKeyUp(KeyCode.M)) {
+                    pausePanel.SetActive(false);
+                    StateManager.instance.GoToMainMenu();
+                }
             }
 
-            if (Input.GetKey(KeyCode.UpArrow)) {
-                Debug.Log("player 2 up");
-                Vector3 t = rightPaddleP2.transform.position;
-                t.y = BorderTopCheck(t);
-                rightPaddleP2.transform.position = t;
-            }
-            else if (Input.GetKey(KeyCode.DownArrow)) {
-                Debug.Log("player 2 down");
-                Vector3 t = rightPaddleP2.transform.position;
-                t.y = BorderBottomCheck(t);
-                rightPaddleP2.transform.position = t;
+            if(!startPanel.activeInHierarchy && !gameOverPanel.activeInHierarchy && !pausePanel.activeInHierarchy) { 
+                if (Input.GetKey(KeyCode.W)) {
+                    Debug.Log("player 1 up");
+                    Vector3 t = leftPaddleP1.transform.position;
+                    t.y = BorderTopCheck(t);
+                    leftPaddleP1.transform.position = t;
+                }
+                else if (Input.GetKey(KeyCode.S)) {
+                    Debug.Log("palyer 1 down");
+                    Vector3 t = leftPaddleP1.transform.position;
+                    t.y = BorderBottomCheck(t);
+                    leftPaddleP1.transform.position = t;
+                }
+
+                if (GameManager.instance.IsTwoPlayer()) {
+                    if (Input.GetKey(KeyCode.UpArrow)) {
+                        Debug.Log("player 2 up");
+                        Vector3 t = rightPaddleP2.transform.position;
+                        t.y = BorderTopCheck(t);
+                        rightPaddleP2.transform.position = t;
+                    }
+                    else if (Input.GetKey(KeyCode.DownArrow)) {
+                        Debug.Log("player 2 down");
+                        Vector3 t = rightPaddleP2.transform.position;
+                        t.y = BorderBottomCheck(t);
+                        rightPaddleP2.transform.position = t;
+                    }
+                }
             }
 
-
-            if (Input.GetKey(KeyCode.Minus)) {
+           /*if (Input.GetKey(KeyCode.Minus)) {
                 Debug.Log("render texture scale down");
                 Vector3 t = renderTexture.transform.localScale;
-                t *= 0.9875f * Time.deltaTime;
+                t *= (0.99975f * Time.deltaTime);
                 renderTexture.transform.localScale = t;
             }
             else if (Input.GetKey(KeyCode.Equals)) {
                 Debug.Log("render texture scale up");
                 Vector3 t = renderTexture.transform.localScale;
-                t *= 1.0125f * Time.deltaTime;
+                t = (t * 1.000125f);
                 renderTexture.transform.localScale = t;
-            }
+            }*/
         }
     }
 }

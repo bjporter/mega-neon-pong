@@ -9,6 +9,12 @@ public class MouseOverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField]
     private GameObject menuTextHoverEffect, onePlayerGameMenuButton, twoPlayerGameMenuButton, quitGameMenuButton;
 
+    [SerializeField]
+    private AudioClip menuHoverOver;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
     public void OnPointerExit(PointerEventData data) {
         if(menuTextHoverEffect != null) {
             menuTextHoverEffect.SetActive(false);
@@ -22,11 +28,14 @@ public class MouseOverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
             if (gameObject.name == onePlayerGameMenuButton.name) {
                 menuTextHoverEffect.transform.position = new Vector3(2.66f, 3.45f, -8.48f);
+                audioSource.PlayOneShot(menuHoverOver);
             }
             else if (gameObject.name == twoPlayerGameMenuButton.name) {
                 menuTextHoverEffect.transform.position = new Vector3(2.6f, 2.77f, -8.48f);
+                audioSource.PlayOneShot(menuHoverOver);
             }
             else if (gameObject.name == "Quit Button") {
+                audioSource.PlayOneShot(menuHoverOver);
                 menuTextHoverEffect.transform.position = new Vector3(2.65f, 2.19f, -8.48f);
             }
         }
