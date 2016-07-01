@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - Paddle
+  - Ball
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -18,7 +21,7 @@ TagManager:
   - Paddles
   - Level
   - Background
-  - 
+  - Border
   - 
   - 
   - 
