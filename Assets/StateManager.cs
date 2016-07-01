@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour {
 
@@ -14,7 +15,10 @@ public class StateManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject leftPaddle, rightPaddle, ball, gameOverPanel, startPanel, pausePanel;
-    
+
+    [SerializeField]
+    private Text gameOverText;
+
     [SerializeField]
     private GameObject[] cameraEffects;
 
@@ -91,6 +95,11 @@ public class StateManager : MonoBehaviour {
     void GameOver() {
         gamePaused = true;
         ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        if(ScoreManager.instance.GetPlayer1Score() == 7f) {
+            gameOverText.text = "Player 1 Wins!";
+        } else {
+            gameOverText.text = "Player 2 Wins!";
+        }
         gameOver = true;
         gameOverPanel.SetActive(true);
     }
@@ -132,9 +141,9 @@ public class StateManager : MonoBehaviour {
     }
 
     void CheckForEndGameScores() {
-        if(ScoreManager.instance.GetPlayer1Score() == 11) {
+        if(ScoreManager.instance.GetPlayer1Score() == 7) {
             GameOver();
-        } else if(ScoreManager.instance.GetPlayer2Score() == 11) {
+        } else if(ScoreManager.instance.GetPlayer2Score() == 7) {
             GameOver();
         }
     }

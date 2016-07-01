@@ -12,6 +12,16 @@ public class ControlManager : MonoBehaviour {
     [SerializeField]
     private GameObject leftPaddleP1, rightPaddleP2, renderTexture, pausePanel, startPanel, gameOverPanel;
 
+    [SerializeField]
+    private AudioClip menuClick;
+
+    [SerializeField]
+    private AudioSource menuClickSource;
+
+    void PlayMenuClick() {
+        menuClickSource.PlayOneShot(menuClick);
+    }
+
     private void CreateSingleton() {
         if(instance == null) {
             instance = this;
@@ -55,12 +65,14 @@ public class ControlManager : MonoBehaviour {
         if(StateManager.instance.gameOver) {
             if(Input.GetKeyUp(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
                 StateManager.instance.NewGame();
+                PlayMenuClick();
             }
         }
 
         //CHANGE STYLE
         if (Input.GetKeyDown(KeyCode.Y)) {
             StateManager.instance.NextCameraEffect();
+            PlayMenuClick();
         }
 
         if (!StateManager.instance.gameOver) {
@@ -69,6 +81,7 @@ public class ControlManager : MonoBehaviour {
             if (startPanel.activeInHierarchy) {
                 if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
                     StateManager.instance.StartGame();
+                    PlayMenuClick();
                 }
             }
 
@@ -77,14 +90,17 @@ public class ControlManager : MonoBehaviour {
                 if (!pausePanel.activeInHierarchy) {
                     pausePanel.SetActive(true);
                     StateManager.instance.PauseGame();
+                    PlayMenuClick();
                 }
             }
 
             if(pausePanel.activeInHierarchy) {
                 if((Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))) {
+                    PlayMenuClick();
                     pausePanel.SetActive(false);
                     StateManager.instance.UnPauseGame();
                 } else if(Input.GetKeyUp(KeyCode.M)) {
+                    PlayMenuClick();
                     pausePanel.SetActive(false);
                     StateManager.instance.GoToMainMenu();
                 }

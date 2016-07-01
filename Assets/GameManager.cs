@@ -39,7 +39,9 @@ public class GameManager : MonoBehaviour {
     }
 
     void Awake() {
-        gameType = GameType.SinglePlayer;
+        if (gameType != GameType.SinglePlayer && gameType != GameType.TwoPlayer) {
+            gameType = GameType.SinglePlayer;
+        }
         Debug.Log("Game Type: " + gameType.ToString());
         MakeSingleton();
     }

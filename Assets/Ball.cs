@@ -13,6 +13,12 @@ public class Ball : MonoBehaviour {
     [SerializeField]
     private RippleEffectEdit rippleEffect;
 
+    [SerializeField]
+    private AudioSource wallSoundSource, leftPaddleHitSource, rightPaddleHitSource;
+
+    [SerializeField]
+    private AudioClip wallSoundClip, leftPaddleHitClip, rightPaddleHitClip;
+
 /*    void OnCollisionStay2D(Collision2D collision) {
         Debug.Log("Stay Collision with " + collision.gameObject.tag + ", " + collision.gameObject.name);
 
@@ -50,9 +56,18 @@ public class Ball : MonoBehaviour {
         if(collision.gameObject.tag == "Paddle") {
             //rippleEffect.MakeRipple();
 
+            if(collision.gameObject.name == "Left Paddle") {
+                leftPaddleHitSource.PlayOneShot(leftPaddleHitClip);
+            } else {
+                rightPaddleHitSource.PlayOneShot(rightPaddleHitClip);
+            }
+
             glitch.enabled = true;
             Debug.Log("Starting glitch");
             Debug.Log(glitchSeconds);
+
+
+
             StartCoroutine(ScreenGlitch(glitchSeconds));
         }
         Debug.Log("contacts length: " + collision.contacts.Length);
@@ -70,6 +85,10 @@ public class Ball : MonoBehaviour {
                     StateManager.instance.Player2Scored();
                 } else if (pointOfContactNormal == Vector2.left) {
                     StateManager.instance.Player1Scored();
+                } else if(pointOfContactNormal == Vector2.up) {
+                    wallSoundSource.PlayOneShot(wallSoundClip);
+                } else if(pointOfContactNormal == Vector2.down) {
+                    wallSoundSource.PlayOneShot(wallSoundClip);
                 }
             }
         }
